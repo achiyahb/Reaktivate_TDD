@@ -23,6 +23,7 @@ function App(): React.ReactElement {
 
   return (
     <div>
+      <h1>Books</h1>
       {list.map((book, i) => (
         <div key={i}>
           {book.author}: {book.name}
