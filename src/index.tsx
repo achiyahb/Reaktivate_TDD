@@ -1,15 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 // import { observer } from "mobx-react";
 
 import "./styles.css";
 import booksRepository from "./Books/Books.repository";
 
-function App() {
-  const [list, setList] = useState([]);
+interface Book {
+  author: string;
+  name: string;
+}
 
-  React.useEffect(() => {
-    async function load() {
+function App(): React.ReactElement {
+  const [list, setList] = useState<Book[]>([]);
+
+  useEffect(() => {
+    async function load(): Promise<void> {
       const books = await booksRepository.getBooks();
       setList(books);
     }
@@ -37,4 +42,6 @@ function App() {
 const ObservedApp = App;
 
 const rootElement = document.getElementById("root");
-ReactDOM.render(<ObservedApp />, rootElement);
+if (rootElement) {
+  ReactDOM.render(<ObservedApp />, rootElement);
+}
