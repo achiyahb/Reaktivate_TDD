@@ -4,15 +4,31 @@ import { useBooks } from "./Books.module";
 import { ViewMode } from "../Shared/enums/ViewMode.enum";
 
 const BooksView: React.FC = observer(() => {
-  const { books, addBook, switchViewMode } = useBooks();
+  const { books, viewMode, addBook, switchViewMode } = useBooks();
 
   return (
     <div>
       <div>
-        <button onClick={() => switchViewMode(ViewMode.ALL)}>All Books</button>
-        <button onClick={() => switchViewMode(ViewMode.PRIVATE)}>
+        <label>
+          <input
+            type="radio"
+            name="viewMode"
+            value={ViewMode.ALL}
+            checked={viewMode === ViewMode.ALL}
+            onChange={() => switchViewMode(ViewMode.ALL)}
+          />
+          All Books
+        </label>
+        <label>
+          <input
+            type="radio"
+            name="viewMode"
+            value={ViewMode.PRIVATE}
+            checked={viewMode === ViewMode.PRIVATE}
+            onChange={() => switchViewMode(ViewMode.PRIVATE)}
+          />
           Private Books
-        </button>
+        </label>
       </div>
 
       {books.map((book, i) => (
