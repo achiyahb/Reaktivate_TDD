@@ -27,6 +27,13 @@ class BooksRepository {
     );
     return bookAddDto && bookAddDto.status === "ok" ? true : false;
   };
+
+  getPrivateBooks = async (ownerId = "achiya"): Promise<Book[]> => {
+    const booksDto = await this.httpGateway.get<Book[]>(
+      `/books/${ownerId}/private`
+    );
+    return booksDto;
+  };
 }
 
 const booksRepository = new BooksRepository();
