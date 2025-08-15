@@ -29,5 +29,6 @@ export const useBooks = () => {
     loadPrivateBooks: booksController.loadPrivateBooks.bind(booksController),
     setViewMode: booksStore.setViewMode.bind(booksStore),
     switchViewMode: booksController.switchViewMode.bind(booksController),
+    privateBooksCount: booksStore.privateBooksCount,
   };
 };

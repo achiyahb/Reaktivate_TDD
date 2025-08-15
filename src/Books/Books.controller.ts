@@ -30,6 +30,7 @@ export class BooksController {
       name: "Demo Book",
       author: "Demo Author",
       ownerId: "achiya",
+      isPrivate: true,
     };
     const isAdded = await booksRepository.addBook(book);
     if (isAdded) {

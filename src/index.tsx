@@ -4,10 +4,12 @@ import { observer } from "mobx-react";
 
 import "./styles.css";
 import BooksView from "./Books/Books.view";
+import Header from "./Shared/Header";
 
 function App(): React.ReactElement {
   return (
     <>
+      <Header />
       <BooksView />
     </>
   );

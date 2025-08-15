@@ -17,12 +17,18 @@ class BooksRepository {
     return booksDto;
   };
 
-  addBook = async ({ name, author, ownerId }: Book): Promise<boolean> => {
+  addBook = async ({
+    name,
+    author,
+    ownerId,
+    isPrivate,
+  }: Book): Promise<boolean> => {
     const bookAddDto = await this.httpGateway.post<BookAddResponse>(
       `/books/${ownerId}`,
       {
         name,
         author,
+        isPrivate,
       }
     );
     return bookAddDto && bookAddDto.status === "ok" ? true : false;

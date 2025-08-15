@@ -5,6 +5,7 @@ import { ViewMode } from "../Shared/enums/ViewMode.enum";
 export class BooksStore {
   books: Book[] = [];
   viewMode: ViewMode = ViewMode.ALL;
+  privateBooksCount: number = 0;
 
   constructor() {
     makeAutoObservable(this, {
@@ -12,14 +13,21 @@ export class BooksStore {
       viewMode: observable,
       setBooks: action,
       setViewMode: action,
+      privateBooksCount: observable,
+      setPrivateBooksCount: action,
     });
   }
 
   async setBooks(books: Book[]) {
     this.books = books;
+    this.setPrivateBooksCount();
   }
 
   setViewMode(mode: ViewMode) {
     this.viewMode = mode;
+  }
+
+  setPrivateBooksCount(): void {
+    this.privateBooksCount = this.books.filter((book) => book.isPrivate).length;
   }
 }
