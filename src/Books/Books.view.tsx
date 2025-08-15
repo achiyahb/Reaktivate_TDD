@@ -1,19 +1,13 @@
-import React, { useEffect } from "react";
-import { useLocalObservable, observer } from "mobx-react";
-import { BooksStore } from "./Books.store";
-import { BooksController } from "./Books.controller";
+import React from "react";
+import { observer } from "mobx-react";
+import { useBooks } from "./Books.service";
 
 const BooksView: React.FC = observer(() => {
-  const booksStore = useLocalObservable(() => new BooksStore());
-
-  useEffect(() => {
-    const booksController = new BooksController(booksStore);
-    booksController.loadBooks();
-  }, []);
+  const { books, addBook } = useBooks();
 
   return (
     <div>
-      {booksStore.books.map((book, i) => (
+      {books.map((book, i) => (
         <div key={i}>
           {book.author}: {book.name}
         </div>
