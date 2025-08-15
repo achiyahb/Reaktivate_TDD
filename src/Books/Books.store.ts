@@ -18,7 +18,7 @@ export class BooksStore {
     });
   }
 
-  async setBooks(books: Book[]) {
+  setBooks(books: Book[]) {
     this.books = books;
     this.setPrivateBooksCount();
   }
