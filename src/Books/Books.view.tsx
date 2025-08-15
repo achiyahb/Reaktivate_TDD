@@ -14,7 +14,7 @@ const BooksView: React.FC = observer(() => {
       ))}
       <button
         onClick={() => {
-          alert("TBD");
+          addBook();
         }}
       >
         Add

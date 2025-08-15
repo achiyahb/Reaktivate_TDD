@@ -3,4 +3,5 @@ export interface Book {
   name: string;
   author: string;
   ownerId: string;
+  isPrivate?: boolean;
 }
