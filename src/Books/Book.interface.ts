@@ -1,7 +1,6 @@
 export interface Book {
-  id: number;
+  id?: number;
   name: string;
   author: string;
   ownerId: string;
-  isPrivate?: boolean;
 }

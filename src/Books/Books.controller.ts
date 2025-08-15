@@ -12,11 +12,9 @@ export class BooksController {
 
   async addBook() {
     const book: Book = {
-      id: Date.now(),
       name: "Demo Book",
       author: "Demo Author",
       ownerId: "achiya",
-      isPrivate: true,
     };
     const isAdded = await booksRepository.addBook(book);
     if (isAdded) {
