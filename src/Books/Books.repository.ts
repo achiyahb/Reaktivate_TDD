@@ -1,9 +1,5 @@
 import ApiGateway from "../Shared/ApiGateway";
-
-interface Book {
-  author: string;
-  name: string;
-}
+import { Book } from "./Book.interface";
 
 interface BookAddResponse {
   status: string;
@@ -16,16 +12,19 @@ class BooksRepository {
     this.httpGateway = new ApiGateway();
   }
 
-  getBooks = async (): Promise<Book[]> => {
-    const booksDto = await this.httpGateway.get<Book[]>("/");
+  getBooks = async (ownerId = "achiya"): Promise<Book[]> => {
+    const booksDto = await this.httpGateway.get<Book[]>(`/books/${ownerId}`);
     return booksDto;
   };
 
-  addBook = async ({ name, author }: Book): Promise<boolean> => {
-    const bookAddDto = await this.httpGateway.post<BookAddResponse>("/books", {
-      name,
-      author,
-    });
+  addBook = async ({ name, author, ownerId }: Book): Promise<boolean> => {
+    const bookAddDto = await this.httpGateway.post<BookAddResponse>(
+      `/books/${ownerId}`,
+      {
+        name,
+        author,
+      }
+    );
     return bookAddDto && bookAddDto.status === "ok" ? true : false;
   };
 }
