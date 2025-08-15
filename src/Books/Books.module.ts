@@ -24,6 +24,10 @@ export const useBooks = () => {
 
   return {
     books: booksStore.books,
+    viewMode: booksStore.viewMode,
     addBook: booksController.addBook.bind(booksController),
+    loadPrivateBooks: booksController.loadPrivateBooks.bind(booksController),
+    setViewMode: booksStore.setViewMode.bind(booksStore),
+    switchViewMode: booksController.switchViewMode.bind(booksController),
   };
 };
