@@ -1,10 +1,10 @@
 import { BooksStore } from "./Books.store";
 import { BooksController } from "./Books.controller";
-import { EntityService } from "../Shared/EntityService";
 
 import { useEffect } from "react";
+import { EntityModule } from "../Shared/EntityModule";
 
-class BooksEntityService extends EntityService<BooksStore, BooksController> {
+class BooksModule extends EntityModule<BooksStore, BooksController> {
   constructor() {
     const store = new BooksStore();
     const controller = new BooksController(store);
@@ -12,11 +12,11 @@ class BooksEntityService extends EntityService<BooksStore, BooksController> {
   }
 }
 
-const booksService = new BooksEntityService();
+const booksModule = new BooksModule();
 
 export const useBooks = () => {
-  const booksStore = booksService.getStore();
-  const booksController = booksService.getController();
+  const booksStore = booksModule.getStore();
+  const booksController = booksModule.getController();
 
   useEffect(() => {
     booksController.loadBooks();

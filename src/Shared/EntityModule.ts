@@ -1,4 +1,4 @@
-export abstract class EntityService<Store, Controller> {
+export abstract class EntityModule<Store, Controller> {
   protected store: Store;
   protected controller: Controller;
 
@@ -16,7 +16,7 @@ export abstract class EntityService<Store, Controller> {
   }
 }
 
-export interface EntityServices<Store, Controller> {
+export interface EntityModules<Store, Controller> {
   store: Store;
   controller: Controller;
 }

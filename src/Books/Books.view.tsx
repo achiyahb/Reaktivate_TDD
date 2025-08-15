@@ -1,6 +1,6 @@
 import React from "react";
 import { observer } from "mobx-react";
-import { useBooks } from "./Books.service";
+import { useBooks } from "./Books.module";
 
 const BooksView: React.FC = observer(() => {
   const { books, addBook } = useBooks();
